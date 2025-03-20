@@ -106,7 +106,7 @@ export const firebaseConfig = {
 };
 ```
 
-## 📱 Usage
+## Usage
 
 ### Development
 1. Start Frontend Development Server:
