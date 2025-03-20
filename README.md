@@ -162,4 +162,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 Akshay K - [@akshayk7k](https://github.com/akshayk7k)
 
-Project Link: [https://github.com/akshayk7k/Login-SignUp-Page](https://github.com/akshayk7k/art_martketplace.git)
+Project Link: [https://github.com/akshayk7k/art_martketplace.git](https://github.com/akshayk7k/art_martketplace.git)
