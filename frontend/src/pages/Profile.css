@@ -1,0 +1,234 @@
+.profile-container {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.profile-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.profile-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0;
+}
+
+.profile-form, .profile-info {
+  background: white;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #4b5563;
+  font-size: 0.875rem;
+}
+
+.form-group input, .form-group textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 1rem;
+  line-height: 1.5;
+  transition: all 0.15s ease;
+  background: white;
+  color: #1f2937;
+  resize: vertical;
+  min-height: 44px;
+}
+
+.form-group textarea {
+  min-height: 120px;
+  font-family: inherit;
+}
+
+.form-group input:hover, .form-group textarea:hover {
+  border-color: #9ca3af;
+}
+
+.form-group input:focus, .form-group textarea:focus {
+  outline: none;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+  background: white;
+}
+
+.form-group input::placeholder, .form-group textarea::placeholder {
+  color: #9ca3af;
+}
+
+.form-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.save-button, .cancel-button, .edit-button {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.save-button {
+  background: #6366f1;
+  color: white;
+  flex: 1;
+}
+
+.save-button:hover:not(:disabled) {
+  background: #4f46e5;
+  transform: translateY(-1px);
+}
+
+.save-button:disabled {
+  background: #e0e7ff;
+  cursor: not-allowed;
+}
+
+.cancel-button {
+  background: #f3f4f6;
+  color: #4b5563;
+  flex: 1;
+}
+
+.cancel-button:hover {
+  background: #e5e7eb;
+  transform: translateY(-1px);
+}
+
+.edit-button {
+  background: #6366f1;
+  color: white;
+  width: 100%;
+  margin-top: 1.5rem;
+}
+
+.edit-button:hover {
+  background: #4f46e5;
+  transform: translateY(-1px);
+}
+
+.info-group {
+  padding: 1rem;
+  background: #f9fafb;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  transition: all 0.15s ease;
+}
+
+.info-group:hover {
+  background: #f3f4f6;
+}
+
+.info-group h3 {
+  color: #6b7280;
+  margin: 0 0 0.25rem 0;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+}
+
+.info-group p {
+  color: #1f2937;
+  font-size: 1rem;
+  font-weight: 400;
+  margin: 0;
+  line-height: 1.5;
+  word-break: break-word;
+}
+
+.success-message {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: #34d399;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  box-shadow: 0 4px 6px -1px rgba(52, 211, 153, 0.2);
+  animation: slideIn 0.3s ease forwards;
+}
+
+.error-message {
+  background: #fee2e2;
+  color: #dc2626;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  margin: 1rem 0;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border: 1px solid #fecaca;
+}
+
+.loading {
+  text-align: center;
+  padding: 3rem 2rem;
+  color: #6b7280;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.loading p {
+  margin: 0;
+}
+
+.no-profile {
+  text-align: center;
+  padding: 3rem 2rem;
+}
+
+.login-link {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  background: #6366f1;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.15s ease;
+}
+
+.login-link:hover {
+  background: #4f46e5;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 640px) {
+  .profile-container {
+    margin: 1rem;
+    padding: 1.5rem;
+  }
+
+  .profile-header h1 {
+    font-size: 1.75rem;
+  }
+
+  .form-buttons {
+    flex-direction: column;
+  }
+
+  .save-button, .cancel-button {
+    width: 100%;
+  }
+} 

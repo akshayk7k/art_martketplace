@@ -1,0 +1,78 @@
+/* Navbar.css */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: #333;
+  color: white;
+}
+
+.logo {
+  text-decoration: none;
+  color: white;
+}
+
+.logo h2 {
+  margin: 0;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.nav-links a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.user-name {
+  color: #4CAF50;
+  font-weight: 500;
+}
+
+.logout-button {
+  background: transparent;
+  border: 1px solid #ff4444;
+  color: #ff4444;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.logout-button:hover {
+  background: #ff4444;
+  color: white;
+}
+
+.admin-badge {
+  margin-left: 0.5rem;
+  padding: 0.2rem 0.5rem;
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 4px;
+  font-size: 0.8rem;
+}
+
+.admin-link {
+  background-color: #4CAF50;
+  color: white !important;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.admin-link:hover {
+  background-color: #45a049;
+}
+  

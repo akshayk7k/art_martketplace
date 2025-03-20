@@ -1,0 +1,365 @@
+.artwork-management {
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+}
+
+.artwork-management-header {
+  background: linear-gradient(181deg, #e0e0e0 0%, #3498db 100%);
+  padding: 2rem;
+  color: white;
+  text-align: center;
+}
+
+.artwork-management-header h2 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: -0.025em;
+}
+
+.artwork-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+  padding: 1.5rem;
+  background: #f9fafb;
+}
+
+.artwork-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.2s ease;
+  border: 1px solid #e5e7eb;
+  position: relative;
+}
+
+.artwork-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.artwork-image {
+  position: relative;
+  padding-top: 75%;
+  background: #f3f4f6;
+  overflow: hidden;
+}
+
+.artwork-image img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.artwork-card:hover .artwork-image img {
+  transform: scale(1.05);
+}
+
+.artwork-info {
+  padding: 1.25rem;
+}
+
+.artwork-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #111827;
+  margin: 0 0 0.5rem 0;
+}
+
+.artwork-artist {
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin-bottom: 1rem;
+}
+
+.artwork-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  font-size: 0.75rem;
+  color: #6b7280;
+}
+
+.artwork-date {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.artwork-status {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-weight: 500;
+}
+
+.artwork-status.flagged {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.artwork-status.active {
+  background: #ecfdf5;
+  color: #059669;
+}
+
+.artwork-actions {
+  display: flex;
+  gap: 0.75rem;
+  padding: 1.25rem;
+  background: #f9fafb;
+  border-top: 1px solid #e5e7eb;
+}
+
+.action-button {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1rem;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.15s ease;
+  cursor: pointer;
+  border: none;
+}
+
+.flag-button {
+  background: #f3f4f6;
+  color: #4b5563;
+}
+
+.flag-button:hover {
+  background: #e5e7eb;
+}
+
+.flag-button.flagged {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.flag-button.flagged:hover {
+  background: #fecaca;
+}
+
+.edit-button {
+  background: #6366f1;
+  color: white;
+}
+
+.edit-button:hover {
+  background: #4f46e5;
+}
+
+.delete-button {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.delete-button:hover {
+  background: #fecaca;
+}
+
+.edit-mode .artwork-title-input,
+.edit-mode .artwork-artist-input {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: inherit;
+  color: #111827;
+  background: white;
+  transition: all 0.15s ease;
+}
+
+.edit-mode .artwork-title-input:focus,
+.edit-mode .artwork-artist-input:focus {
+  outline: none;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.artwork-empty {
+  text-align: center;
+  padding: 3rem 1.5rem;
+  color: #6b7280;
+}
+
+.artwork-empty-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #9ca3af;
+}
+
+.artwork-empty-text {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+@media (max-width: 640px) {
+  .artwork-grid {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .artwork-management-header {
+    padding: 1.5rem;
+  }
+
+  .artwork-management-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .artwork-actions {
+    flex-direction: column;
+  }
+
+  .action-button {
+    width: 100%;
+  }
+}
+
+/* Edit Modal Styles */
+.edit-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.edit-modal {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.edit-modal-header {
+  margin-bottom: 1.5rem;
+}
+
+.edit-modal-header h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #111827;
+  margin: 0;
+}
+
+.edit-modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #6b7280;
+  cursor: pointer;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+}
+
+.edit-modal-close:hover {
+  color: #111827;
+}
+
+.edit-modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.edit-modal-form .form-group {
+  margin: 0;
+}
+
+.edit-modal-form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #374151;
+  font-size: 0.875rem;
+}
+
+.edit-modal-form input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.15s ease;
+}
+
+.edit-modal-form input:hover {
+  border-color: #9ca3af;
+}
+
+.edit-modal-form input:focus {
+  outline: none;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.edit-modal-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.edit-modal-actions button {
+  flex: 1;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.15s ease;
+  cursor: pointer;
+  border: none;
+}
+
+.save-changes-button {
+  background: #6366f1;
+  color: white;
+}
+
+.save-changes-button:hover {
+  background: #4f46e5;
+}
+
+.save-changes-button:disabled {
+  background: #e0e7ff;
+  cursor: not-allowed;
+}
+
+.cancel-edit-button {
+  background: #f3f4f6;
+  color: #4b5563;
+}
+
+.cancel-edit-button:hover {
+  background: #e5e7eb;
+} 
