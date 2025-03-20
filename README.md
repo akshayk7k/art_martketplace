@@ -2,8 +2,6 @@
 
 A modern web application for artists to showcase and sell their artwork. Built with React and Firebase, featuring a responsive design and comprehensive artwork management system.
 
-
-
 ## Features
 
 ### User Features
@@ -47,7 +45,6 @@ A modern web application for artists to showcase and sell their artwork. Built w
 
 ### Backend (Firebase)
 - **Cloud Functions** - Serverless Functions
-- **Cloud Firestore** - NoSQL Database
 - **Cloud Storage** - File Storage
 - **Authentication** - User Management
 
@@ -136,25 +133,7 @@ npm run build
 firebase deploy
 ```
 
-## 📚 API Documentation
-
-### Authentication Endpoints
-- `POST /api/auth/register` - User Registration
-- `POST /api/auth/login` - User Login
-- `POST /api/auth/reset-password` - Password Reset
-
-### Artwork Endpoints
-- `GET /api/artworks` - Get All Artworks
-- `POST /api/artworks` - Create Artwork
-- `PUT /api/artworks/:id` - Update Artwork
-- `DELETE /api/artworks/:id` - Delete Artwork
-
-### User Endpoints
-- `GET /api/users/:id` - Get User Profile
-- `PUT /api/users/:id` - Update User Profile
-- `GET /api/users/:id/artworks` - Get User's Artworks
-
-## 🤝 Contributing
+## Contributing
 
 1. Fork the reposory
 2. Create your feature branch:
@@ -171,16 +150,11 @@ git push origin feature/AmazingFeature
 ```
 5. Open a Pull Request
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 👥 Authors
+## Authors
 
-- Your Name - Initial work
+- Kanzariya Akshay - Initial work
 
-## 🙏 Acknowledgments
-
-- React.js Community
-- Firebase Team
-- All Contributors 
