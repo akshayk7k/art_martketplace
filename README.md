@@ -1,52 +1,95 @@
 # Art Marketplace
 
-A full-stack web application for artists to showcase and sell their artwork online.
+A modern, full-stack web application for artists to showcase, sell, and manage their artwork online. Built with React, Firebase, and Node.js.
 
-## Features
+![Art Marketplace Preview](preview.png)
+## 🌟 Features
 
-- User Authentication with Firebase
-- Artwork Upload and Management
-- User Profiles with Portfolio
-- Rating and Review System
-- Admin Dashboard
-- Responsive Design
-- Modern UI Components:
-  - Dark-themed modals with blur effects
-  - Smooth animations and transitions
-  - Accessible color contrasts
-  - Mobile-responsive layouts
-  - Custom scrollbars
-  - Interactive hover effects
+### User Features
+- 🔐 Secure Authentication with Firebase
+- 🎨 Artwork Upload with Image Processing
+  - Automatic image resizing and optimization
+  - Multiple aspect ratio support
+  - Image preview functionality
+- 👤 User Profiles with Portfolio Management
+- ⭐ Rating and Review System
+- 💬 Artist-Collector Messaging
+- 🛒 Shopping Cart and Checkout
 
-## Tech Stack
+### Admin Features
+- 📊 Dashboard with Analytics
+- 👥 User Management
+- 🖼️ Artwork Moderation
+- 📈 Sales Reports
+- ⚙️ System Configuration
 
-- Frontend: React.js, Firebase Auth, Firestore
-- Backend: Node.js, Express.js, Firebase Admin SDK
-- Database: Firebase Firestore
-- Authentication: Firebase Auth, JWT
-- UI/UX: 
-  - Modern CSS with Flexbox/Grid
-  - CSS Animations and Transitions
-  - Cross-browser compatible styles
-  - Mobile-first responsive design
+### Technical Features
+- 🚀 Progressive Web App (PWA) Support
+- 📱 Responsive Design
+- 🔄 Real-time Updates
+- 🔍 Advanced Search and Filtering
+- 🌐 Multi-language Support
 
-## Setup
+## 🛠️ Tech Stack
 
-1. Clone and install dependencies:
+### Frontend
+- React.js with Hooks
+- Firebase Authentication
+- Firebase Firestore
+- Firebase Storage
+- React Router
+- Context API for State Management
+- Modern CSS with Flexbox/Grid
+- CSS Animations and Transitions
+
+### Backend
+- Node.js
+- Express.js
+- Firebase Admin SDK
+- JWT Authentication
+- RESTful API
+
+### Database
+- Firebase Firestore
+- Firebase Storage for Images
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js (v14 or higher)
+- npm or yarn
+- Firebase account
+
+### Installation
+
+1. Clone the repository:
 ```bash
 git clone https://github.com/akshayk7k/art_marketplace.git
 cd art-marketplace
+```
+
+2. Install dependencies:
+```bash
+# Install root dependencies
 npm install
+
+# Install frontend dependencies
 cd frontend
+npm install
+
+# Install backend dependencies
+cd ../backend
 npm install
 ```
 
-2. Configure Firebase:
-- Create Firebase project
-- Enable Auth and Firestore
-- Add config to `frontend/src/firebase/config.js`
+3. Configure Firebase:
+- Create a new Firebase project
+- Enable Authentication and Firestore
+- Generate Firebase configuration
+- Add configuration to `frontend/src/firebase/config.js`
 
-3. Set environment variables:
+4. Set up environment variables:
+Create a `.env` file in the backend directory:
 ```bash
 JWT_SECRET=your_secret
 FIREBASE_PROJECT_ID=your_project_id
@@ -54,47 +97,85 @@ FIREBASE_PRIVATE_KEY=your_private_key
 FIREBASE_CLIENT_EMAIL=your_client_email
 ```
 
-4. Start development servers:
-```bash
-# Backend
-npm run dev
+### Running the Application
 
-# Frontend
+1. Start the backend server:
+```bash
+cd backend
+npm run dev
+```
+
+2. Start the frontend development server:
+```bash
 cd frontend
 npm start
 ```
 
-## UI Components
+The application will be available at `http://localhost:3000`
 
-### Modals
-The application features modern, accessible modals with:
-- Dark theme with proper contrast ratios
-- Backdrop blur effects (with Safari support)
-- Smooth enter/exit animations
-- Mobile-responsive layouts
-- Keyboard navigation support
-- Clear action buttons with hover states
+## 📱 UI/UX Features
+
+### Modern Design
+- Dark/Light theme support
+- Glassmorphism effects
+- Smooth animations
+- Custom scrollbars
+- Interactive hover effects
+- Loading skeletons
 
 ### Responsive Design
 - Mobile-first approach
 - Flexible grid layouts
 - Adaptive typography
 - Touch-friendly interactions
-- Optimized for various screen sizes
+- Optimized for all screen sizes
 
 ### Accessibility
-- WCAG 2.1 compliant color contrasts
-- Keyboard navigation support
-- Screen reader friendly
+- WCAG 2.1 compliant
+- Keyboard navigation
+- Screen reader support
 - Clear visual hierarchy
 - Proper HTML semantics
 
-## License
+## 🔒 Security Features
 
-MIT License 
+- JWT-based authentication
+- Role-based access control
+- Input validation and sanitization
+- CSRF protection
+- Rate limiting
+- Secure file uploads
 
-## Contact
+## 📦 Project Structure
+``
+art-marketplace/
+├── frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   ├── contexts/
+│   │   ├── firebase/
+│   │   ├── pages/
+│   │   ├── styles/
+│   │   └── utils/
+│   └── public/
+├── backend/
+│   ├── config/
+│   ├── controllers/
+│   ├── middleware/
+│   ├── models/
+│   ├── routes/
+│   └── utils/
+└── README.md
+```
+
+
+
+
+## 👨‍💻 Author
 
 Akshay K - [@akshayk7k](https://github.com/akshayk7k)
 
-Project Link: [https://github.com/akshayk7k/art_marketplace.git](https://github.com/akshayk7k/art_marketplace.git)
+## 📞 Contact
+
+Project Link: [https://github.com/akshayk7k/art_marketplace](https://github.com/akshayk7k/art_marketplace)
+

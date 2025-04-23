@@ -13,11 +13,6 @@ const ASPECT_RATIOS = {
   "1:1": { width: 1, height: 1 }
 };
 
-const CATEGORIES = {
-  'digital-photography': 'Digital Photography',
-  'art-painting': 'Art & Painting'
-};
-
 const resizeAndConvertToBase64 = (file, aspectRatio) => {
   return new Promise((resolve) => {
     const reader = new FileReader();
@@ -79,12 +74,12 @@ const UploadArt = () => {
   const [title, setTitle] = useState("");
   const [artist, setArtist] = useState("");
   const [image, setImage] = useState(null);
+  const [category, setCategory] = useState("digital");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [uploadProgress, setUploadProgress] = useState(0);
   const [selectedRatio, setSelectedRatio] = useState("3:4");
   const [imagePreview, setImagePreview] = useState(null);
-  const [category, setCategory] = useState("digital-photography"); // Default category
   const navigate = useNavigate();
   const { currentUser, isAuthenticated } = useAuth();
 
@@ -102,7 +97,6 @@ const UploadArt = () => {
 
     try {
       console.log("Starting upload process...");
-      console.log("Selected category:", category); // Add this for debugging
       
       if (!image) {
         throw new Error("Please select an image");
@@ -110,10 +104,6 @@ const UploadArt = () => {
 
       if (!currentUser) {
         throw new Error("You must be logged in to upload artwork");
-      }
-
-      if (!category || category === 'all') {
-        throw new Error("Please select a specific category");
       }
 
       setUploadProgress(30);
@@ -125,23 +115,17 @@ const UploadArt = () => {
 
       setUploadProgress(60);
 
-      // Add to Firestore with the correct category
-      const artworkData = {
+      // Add to Firestore
+      console.log("Adding to Firestore...");
+      const docRef = await addDoc(collection(db, "artworks"), {
         title,
         artist,
         imageData: base64Image,
         aspectRatio: selectedRatio,
-        category: category, // Make sure category is being set correctly
         userId: currentUser.uid,
-        username: currentUser.displayName || 'Anonymous',
-        createdAt: new Date().toISOString(),
-        ratings: [],
-        averageRating: 0,
-        ratingCounts: {1: 0, 2: 0, 3: 0, 4: 0, 5: 0}
-      };
-
-      console.log("Adding to Firestore with category:", artworkData.category);
-      const docRef = await addDoc(collection(db, "artworks"), artworkData);
+        category,
+        createdAt: new Date().toISOString()
+      });
       console.log("Document added to Firestore:", docRef.id);
 
       setUploadProgress(100);
@@ -218,6 +202,20 @@ const UploadArt = () => {
       )}
       <form onSubmit={handleUpload}>
         <div className="form-group">
+          <label htmlFor="category">Category</label>
+          <select
+            id="category"
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+            required
+            disabled={loading}
+          >
+            <option value="digital">Digital Art</option>
+            <option value="photography">Photography</option>
+            <option value="painting">Painting</option>
+          </select>
+        </div>
+        <div className="form-group">
           <label htmlFor="aspectRatio">Aspect Ratio</label>
           <select
             id="aspectRatio"
@@ -229,26 +227,6 @@ const UploadArt = () => {
             <option value="4:3">4:3 (Landscape)</option>
             <option value="16:9">16:9 (Widescreen)</option>
             <option value="1:1">1:1 (Square)</option>
-          </select>
-        </div>
-        <div className="form-group">
-          <label htmlFor="category">Category</label>
-          <select 
-            id="category"
-            value={category}
-            onChange={(e) => {
-              console.log("Category changed to:", e.target.value); // Add this for debugging
-              setCategory(e.target.value);
-            }}
-            required
-            disabled={loading}
-            className="category-select"
-          >
-            {Object.entries(CATEGORIES).map(([value, label]) => (
-              <option key={value} value={value}>
-                {label}
-              </option>
-            ))}
           </select>
         </div>
         <div className="form-group">

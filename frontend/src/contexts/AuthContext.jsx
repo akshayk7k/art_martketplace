@@ -106,6 +106,14 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  // Add refreshUser function
+  const refreshUser = async () => {
+    if (auth.currentUser) {
+      const isAdmin = await checkAdminStatus(auth.currentUser);
+      setCurrentUser({ ...auth.currentUser, isAdmin });
+    }
+  };
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (user) {
@@ -128,7 +136,8 @@ export const AuthProvider = ({ children }) => {
     signup,
     logout,
     error,
-    setError
+    setError,
+    refreshUser
   };
 
   return (

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
-import './Register.css';
+import './Auth.css';
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -51,53 +51,65 @@ const Register = () => {
   };
 
   return (
-    <div className="register-container">
-      <h2>Register</h2>
-      {error && <div className="error-message">{error}</div>}
-      <form onSubmit={handleSubmit} className="register-form">
-        <div className="form-group">
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
+    <div className="auth-container">
+      <div className="auth-card">
+        <h2>Join the Community</h2>
+        {error && <div className="auth-error">{error}</div>}
+        <form onSubmit={handleSubmit} className="auth-form">
+          <div className="form-group">
+            <label htmlFor="username">Username</label>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              value={formData.username}
+              onChange={handleChange}
+              placeholder="Choose a username"
+              required
+              disabled={loading}
+              autoComplete="username"
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="email">Email Address</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              placeholder="Enter your email"
+              required
+              disabled={loading}
+              autoComplete="email"
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+              placeholder="Create a password"
+              required
+              disabled={loading}
+              autoComplete="new-password"
+            />
+          </div>
+          <button 
+            type="submit" 
             disabled={loading}
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="username">Username</label>
-          <input
-            type="text"
-            id="username"
-            name="username"
-            value={formData.username}
-            onChange={handleChange}
-            required
-            disabled={loading}
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-            required
-            disabled={loading}
-          />
-        </div>
-        <button type="submit" disabled={loading}>
-          {loading ? 'Creating Account...' : 'Register'}
-        </button>
-      </form>
-      <p className="auth-link">
-        Already have an account? <a href="/login">Sign in here</a>
-      </p>
+            className={loading ? 'loading' : ''}
+          >
+            {loading ? 'Creating Account...' : 'Create Account'}
+          </button>
+        </form>
+        <p className="auth-link">
+          Already have an account? <a href="/login">Sign in here</a>
+        </p>
+      </div>
     </div>
   );
 };

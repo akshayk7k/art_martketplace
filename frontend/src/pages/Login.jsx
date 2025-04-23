@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
-import './Login.css';
+import './Auth.css';
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -38,41 +38,51 @@ const Login = () => {
   };
 
   return (
-    <div className="login-container">
-      <h2>Login</h2>
-      {error && <div className="error-message">{error}</div>}
-      <form onSubmit={handleSubmit} className="login-form">
-        <div className="form-group">
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
+    <div className="auth-container">
+      <div className="auth-card">
+        <h2>Welcome Back</h2>
+        {error && <div className="auth-error">{error}</div>}
+        <form onSubmit={handleSubmit} className="auth-form">
+          <div className="form-group">
+            <label htmlFor="email">Email Address</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              placeholder="Enter your email"
+              required
+              disabled={loading}
+              autoComplete="email"
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+              placeholder="Enter your password"
+              required
+              disabled={loading}
+              autoComplete="current-password"
+            />
+          </div>
+          <button 
+            type="submit" 
             disabled={loading}
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-            required
-            disabled={loading}
-          />
-        </div>
-        <button type="submit" disabled={loading}>
-          {loading ? 'Logging in...' : 'Login'}
-        </button>
-      </form>
-      <p className="auth-link">
-        Don't have an account? <a href="/register">Register here</a>
-      </p>
+            className={loading ? 'loading' : ''}
+          >
+            {loading ? 'Signing In...' : 'Sign In'}
+          </button>
+        </form>
+        <p className="auth-link">
+          New to Art Marketplace? <a href="/register">Create an account</a>
+        </p>
+      </div>
     </div>
   );
 };

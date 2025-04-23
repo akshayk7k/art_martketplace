@@ -16,24 +16,27 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="navbar">
-      <div className="navbar-brand">
-        <Link to="/" className="logo">Art Marketplace</Link>
-      </div>
-      <div className="navbar-menu">
+    <nav>
+      <Link to="/" className="logo">
+        <h2>Art Gallery</h2>
+      </Link>
+      <div className="nav-links">
         <Link to="/">Home</Link>
         {currentUser ? (
           <>
             <Link to="/upload">Upload Art</Link>
+            <Link to="/my-artwork">My Artwork</Link>
             {isAdmin && (
               <Link to="/admin" className="admin-link">
                 Admin Dashboard
               </Link>
             )}
-            <span className="user-name">
-              Welcome, {currentUser.displayName || 'User'}
-              {isAdmin && <span className="admin-badge">(Admin)</span>}
-            </span>
+            <Link to="/profile" className="profile-link">
+              <span className="user-name">
+                Welcome, {currentUser.displayName || 'User'}
+                {isAdmin && <span className="admin-badge">(Admin)</span>}
+              </span>
+            </Link>
             <button onClick={handleLogout} className="logout-button">
               Logout
             </button>
