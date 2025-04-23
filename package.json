@@ -1,0 +1,17 @@
+{
+  "name": "art-marketplace",
+  "version": "1.0.0",
+  "description": "Art Marketplace Application",
+  "scripts": {
+    "start": "concurrently \"cd backend && npm run dev\" \"cd frontend && npm start\"",
+    "install-all": "npm install && cd backend && npm install && cd ../frontend && npm install",
+    "backend": "cd backend && npm run dev",
+    "frontend": "cd frontend && npm start"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "dependencies": {
+    "art-marketplace": "file:"
+  }
+}

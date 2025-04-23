@@ -1,0 +1,223 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background-color: #f4f4f4;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+h1.gallery-title {
+  text-align: center;
+  color: #333;
+  margin: 2rem 0;
+  font-size: 2.5rem;
+}
+
+.category-selection {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 2rem auto;
+  max-width: 800px;
+}
+
+.category-button {
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 8px;
+  background: #333;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 200px;
+  text-align: center;
+}
+
+.category-button.active {
+  background: #4CAF50;
+}
+
+.category-button:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+.art-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.art-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.art-card:hover {
+  transform: translateY(-5px);
+}
+
+.art-image-container {
+  position: relative;
+  width: 100%;
+  padding-top: 75%;
+  overflow: hidden;
+}
+
+.art-image-container img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.art-info {
+  padding: 1rem;
+}
+
+.art-title {
+  font-size: 1.2rem;
+  color: #333;
+  margin: 0 0 0.5rem 0;
+}
+
+.art-artist {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin: 2rem 0;
+  padding: 1rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.pagination-controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.pagination-button {
+  padding: 0.5rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background: white;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pagination-button:hover:not(:disabled) {
+  background: #f4f4f4;
+}
+
+.pagination-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@media (max-width: 900px) {
+  .art-grid {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+
+  .category-selection {
+    flex-direction: column;
+    padding: 0 1rem;
+  }
+
+  .category-button {
+    width: 100%;
+  }
+
+  h1.gallery-title {
+    font-size: 2rem;
+    margin: 1.5rem 0;
+  }
+}
+
+button {
+  padding: 0.75rem 1.5rem;
+  background-color: #4361ee;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+button:hover:not(:disabled) {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+input, 
+textarea, 
+select {
+  background-color: white;
+  color: #333;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  width: 100%;
+  transition: all 0.2s ease;
+}
+
+input:focus, 
+textarea:focus, 
+select:focus {
+  outline: none;
+  border-color: #4361ee;
+  box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.1);
+}
+
+/* Modal styles */
+.modal-overlay {
+  background-color: rgba(0, 0, 0, 0.75);
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: white;
+  border-radius: 12px;
+  padding: 2rem;
+  max-width: 90%;
+  width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+} 
