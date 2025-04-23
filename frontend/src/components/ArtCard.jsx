@@ -11,6 +11,7 @@ const ArtCard = ({ art, onDelete }) => {
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [isReviewModalOpen, setIsReviewModalOpen] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
+  const [isDeletingReview, setIsDeletingReview] = useState(false);
   const [averageRating, setAverageRating] = useState(0);
   const [userRating, setUserRating] = useState(0);
   const [userReview, setUserReview] = useState('');
@@ -53,7 +54,7 @@ const ArtCard = ({ art, onDelete }) => {
         setRatingDistribution(distribution);
         setAverageRating(average);
         setTotalRatings(total);
-        setReviews(ratings.filter(r => r.review).sort((a, b) => 
+        setReviews(ratings.sort((a, b) => 
           new Date(b.timestamp) - new Date(a.timestamp)
         ));
 
@@ -173,6 +174,37 @@ const ArtCard = ({ art, onDelete }) => {
     }
   };
 
+  const handleDeleteReview = async (reviewUserId) => {
+    if (!currentUser) return;
+    if (currentUser.uid !== reviewUserId) return;
+    
+    try {
+      setIsDeletingReview(true);
+      const artworkRef = doc(db, "artworks", art.id);
+      const artworkDoc = await getDoc(artworkRef);
+      const data = artworkDoc.data();
+      const ratings = data.ratings || [];
+
+      // Remove the user's rating/review
+      const updatedRatings = ratings.filter(r => r.userId !== currentUser.uid);
+
+      // Update artwork document
+      await updateDoc(artworkRef, {
+        ratings: updatedRatings
+      });
+
+      // Update local state
+      await fetchRatingsAndReviews();
+      setUserRating(0);
+      setUserReview('');
+    } catch (error) {
+      console.error("Error deleting review:", error);
+      alert("Failed to delete review. Please try again.");
+    } finally {
+      setIsDeletingReview(false);
+    }
+  };
+
   return (
     <>
       <div className="art-card">
@@ -232,13 +264,6 @@ const ArtCard = ({ art, onDelete }) => {
             {currentUser && !isOwner && (
               <div className="user-rating">
                 <div className="rating-actions">
-                  <div className="quick-rate">
-                    <p>Rate this artwork:</p>
-                    <StarRating 
-                      initialRating={userRating} 
-                      onRate={handleRatingSubmit}
-                    />
-                  </div>
                   <button 
                     className="write-review-button" 
                     onClick={() => setIsReviewModalOpen(true)}
@@ -252,8 +277,8 @@ const ArtCard = ({ art, onDelete }) => {
 
           {/* Reviews Display Section */}
           <div className="reviews-display">
-            <h4 className="reviews-title">Reviews ({reviews.length})</h4>
-            {reviews.length > 0 ? (
+            <h4 className="reviews-title">Reviews ({totalRatings})</h4>
+            {totalRatings > 0 ? (
               <>
                 <div className="reviews-list">
                   {(showAllReviews ? reviews : reviews.slice(0, 2)).map((review, index) => (
@@ -265,7 +290,18 @@ const ArtCard = ({ art, onDelete }) => {
                             {new Date(review.timestamp).toLocaleDateString()}
                           </span>
                         </div>
-                        <StarRating initialRating={review.rating} readonly={true} />
+                        <div className="review-actions">
+                          <StarRating initialRating={review.rating} readonly={true} />
+                          {currentUser && currentUser.uid === review.userId && (
+                            <button 
+                              className="delete-review-button"
+                              onClick={() => handleDeleteReview(review.userId)}
+                              disabled={isDeletingReview}
+                            >
+                              {isDeletingReview ? '🗑️ ...' : '🗑️'}
+                            </button>
+                          )}
+                        </div>
                       </div>
                       {review.review && <p className="review-text">{review.review}</p>}
                     </div>
