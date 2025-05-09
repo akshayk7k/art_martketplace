@@ -2,7 +2,7 @@
 
 A modern, full-stack web application for artists to showcase, sell, and manage their artwork online. Built with React, Firebase, and Node.js.
 
-![Art Marketplace Preview](preview.png)
+![Art Marketplace Preview](https://art-martketplace.vercel.app/)
 ## 🌟 Features
 
 ### User Features
@@ -145,30 +145,6 @@ The application will be available at `http://localhost:3000`
 - CSRF protection
 - Rate limiting
 - Secure file uploads
-
-## 📦 Project Structure
-``
-art-marketplace/
-├── frontend/
-│   ├── src/
-│   │   ├── components/
-│   │   ├── contexts/
-│   │   ├── firebase/
-│   │   ├── pages/
-│   │   ├── styles/
-│   │   └── utils/
-│   └── public/
-├── backend/
-│   ├── config/
-│   ├── controllers/
-│   ├── middleware/
-│   ├── models/
-│   ├── routes/
-│   └── utils/
-└── README.md
-```
-
-
 
 
 ## 👨‍💻 Author
