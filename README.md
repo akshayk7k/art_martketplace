@@ -1,8 +1,7 @@
 # Art Marketplace
 
 A modern, full-stack web application for artists to showcase, sell, and manage their artwork online. Built with React, Firebase, and Node.js.
-
-![Art Marketplace Preview](https://art-martketplace.vercel.app/)
+Demo Link: [Art Marketplace](https://art-martketplace.vercel.app/)
 ## 🌟 Features
 
 ### User Features
